@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.example.com/namespaces/tns/1595325590381" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/namespaces/tns/1595325590381">
+  <xsd:element name="AcctInfoInput">
+    <xsd:complexType>
+      <xsd:sequence>
+                <xsd:element name="ServiceHeader">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ServiceVersion" type="xsd:string"/>
+                            <xsd:element name="MessageID" type="xsd:string"/>
+                            <xsd:element name="FromID">
+                <xsd:complexType>
+                  <xsd:sequence>
+                                        <xsd:element name="Name" type="xsd:string"/>
+                                        <xsd:element name="primitive" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="CreateTime" type="xsd:dateTime"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="PayloadInqReq">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="HeaderForClient">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="BranchNumber" type="xsd:string"/>
+                                        <xsd:element name="UserId" type="xsd:string"/>
+                                        <xsd:element name="SequenceNumber" type="xsd:string"/>
+                                        <xsd:element name="TellerID" type="xsd:string"/>
+                                        <xsd:element name="OverrideFlag" type="xsd:string"/>
+                                        <xsd:element name="CorrectionFlag" type="xsd:string"/>
+                                        <xsd:element name="ReBIDFlag" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="AcctID">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="AcctNo" type="xsd:string"/>
+                                        <xsd:element name="AcctType" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="OldAcctID">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="AcctNo" type="xsd:string"/>
+                                        <xsd:element name="AcctType" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

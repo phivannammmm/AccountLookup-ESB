@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.vietcombank.com.vn/service/global/vn/customer/customerinfo/1.0" xmlns:tns0="http://www.vietcombank.com.vn/entity/vn/common/party" xmlns:tns1="http://www.vietcombank.com/entity/global/backend/vn/signature/message/1.0" xmlns:tns2="datamodel/datatypes/common/serviceenvelope" xmlns:tns3="http://www.vietcombank.com.vn/global/vn/customer/customerinfo/1.0" xmlns:tns4="datamodel/datatypes/common/framework" xmlns:tns5="http://www.vietcombank.com/entity/global/backend/vn/as400/message/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CustomerInfo" targetNamespace="http://www.vietcombank.com.vn/service/global/vn/customer/customerinfo/1.0">
+  <wsdl:types>
+    <xsd:schema xmlns:cmd-party="http://www.vietcombank.com.vn/entity/vn/common/party" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.vietcombank.com.vn/entity/vn/common/party">
+      <xsd:complexType name="AddressInfoType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Address" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Street" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="City" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="District" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Province" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PostalCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="AddressType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="StartDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EndDate" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BankInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="BankNo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BankName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BranchInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="BankInfo" type="cmd-party:BankInfoType"/>
+          <xsd:element name="BranchNo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BranchCode" type="xsd:string">
+            <xsd:annotation/>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="BranchName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactInfo" type="cmd-party:ContactInfoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ContactInfoType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="PhoneInfo" type="cmd-party:PhoneInfoType"/>
+          <xsd:element minOccurs="0" name="AddressInfo" type="cmd-party:AddressInfoType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="MailInfo" type="cmd-party:MailInfoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CorporateInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Name" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShortName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LegalName" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IDInfo" type="cmd-party:IDInfoType"/>
+          <xsd:element minOccurs="0" name="EstablishDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="RegBussIssueDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BussinessType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IndustrialLevel" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SICcode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TaxCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactInfo" type="cmd-party:ContactInfoType"/>
+          <xsd:element minOccurs="0" name="Nationality" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="BomInfo" type="cmd-party:PersonInfoType"/>
+          <xsd:element minOccurs="0" name="CitizenshipCode" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CifNo" type="xsd:string"/>
+          <xsd:choice>
+            <xsd:element minOccurs="0" name="GeneralInfo" type="cmd-party:GeneralInfoType"/>
+            <xsd:element minOccurs="0" name="PersonalInfo" type="cmd-party:PersonInfoType"/>
+            <xsd:element minOccurs="0" name="CorporateInfo" type="cmd-party:CorporateInfoType"/>
+          </xsd:choice>
+          <xsd:element minOccurs="0" name="CustClassType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CustStatus" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BranchInfo" type="cmd-party:BranchInfoType"/>
+          <xsd:element minOccurs="0" name="VIPCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BlackListInd" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OpeningDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastUpdDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="VipBranch" type="cmd-party:BranchInfoType"/>
+          <xsd:element minOccurs="0" name="PersonalFlag" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="VATNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="VATExemptFlag" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IDInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="IDType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IDNo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IDIssueDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IDIssuePlace" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IDIssueState" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="IDExpiryDate" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Country" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Name" type="cmd-party:PersonNameType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IDInfo" type="cmd-party:IDInfoType"/>
+          <xsd:element minOccurs="0" name="Gender" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Birthday" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="BirthPlace" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactInfo" type="cmd-party:ContactInfoType"/>
+          <xsd:element minOccurs="0" name="EducationLevel" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeeInfo" type="cmd-party:EmployeeInfoType"/>
+          <xsd:element minOccurs="0" name="EmployerName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Mnemonic" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="SpouseName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MaritalStatus" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="NumberOfChildren" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="NumberOfDependents" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Nationality" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CitizenshipCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LegalResidenceCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="TaxCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OEDCode" type="xsd:string">
+            <xsd:annotation/>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PersonNameType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="TitlePrefix" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FirstName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MiddleName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LastName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="FullName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ShortName" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Nickname" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PhoneInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="PhoneNo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="PhoneType" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EmployeeInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="EmployeeCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeeTitle" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="EmployeeStatus" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ProfessionCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactInfo" type="cmd-party:ContactInfoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GeneralInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Name" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ContactInfo" type="cmd-party:ContactInfoType"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="IDInfo" type="cmd-party:IDInfoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MailInfoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="MailAddress" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="MailType" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:cmd-fw="datamodel/datatypes/common/framework" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" xmlns:inc-field="http://www.vietcombank.com/entity/global/backend/vn/as400/message/1.0" xmlns:tns="http://www.vietcombank.com/entity/global/backend/vn/signature/message/1.0" elementFormDefault="qualified" targetNamespace="http://www.vietcombank.com/entity/global/backend/vn/signature/message/1.0">
+      <xsd:import namespace="http://www.vietcombank.com/entity/global/backend/vn/as400/message/1.0"/>
+      <xsd:import namespace="datamodel/datatypes/common/framework"/>
+      <xsd:import namespace="datamodel/datatypes/common/serviceenvelope"/>
+      <xsd:complexType name="CommonHeaderReqType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageLength" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReservedField" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="BranchNumber" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="UserID" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SequenceNumber" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TransactionCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ClientType" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SecondaryHeaderReqType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TellerID" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="OverrideFlag" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CorrectionFlag" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReentryFlag" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AMPMFlag" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReBIDFlag" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BitMapReqType">
+        <xsd:sequence>
+          <xsd:element name="Byte1" type="xsd:string"/>
+          <xsd:element name="Byte2" type="xsd:string"/>
+          <xsd:element name="Byte3" type="xsd:string"/>
+          <xsd:element name="Byte4" type="xsd:string"/>
+          <xsd:element name="Byte5" type="xsd:string"/>
+          <xsd:element name="Byte6" type="xsd:string"/>
+          <xsd:element name="Byte7" type="xsd:string"/>
+          <xsd:element name="Byte8" type="xsd:string"/>
+          <xsd:element name="Byte9" type="xsd:string"/>
+          <xsd:element name="Byte10" type="xsd:string"/>
+          <xsd:element name="Byte11" type="xsd:string"/>
+          <xsd:element name="Byte12" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CommonHeaderReq" type="tns:CommonHeaderReqType"/>
+      <xsd:element name="SecondaryHeaderReq" type="tns:SecondaryHeaderReqType"/>
+      <xsd:element name="BitMapReq" type="tns:BitMapReqType"/>
+      <xsd:element name="ReqLength" type="xsd:string"/>
+      <xsd:element name="FieldList" type="tns:FieldListType"/>
+      <xsd:complexType name="FieldListType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Field" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SignOnResType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="RecordLegnth" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReservedField" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Branch" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="UserID" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SequenceNumber" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TransactionCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ClientType" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PostedCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ResponseCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ApplicationCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ResponseFormatCode" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageNumber1" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageNumber2" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageNumber3" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageNumber4" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MessageNumber5" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ResponseLength" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CPDATE" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="NPDATE" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LPDATE" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SYSDATE" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MSVER0" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCUNME" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCAUTH" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCSTAT" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFGP" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFRL1" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFRL2" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFRL3" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFRL4" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWFRL5" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCWKSL" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCLIBR" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SCBK" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSCRS" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSEMP" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSEFX" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSEML" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSPRT" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSCRL" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLACTB" type="inc-field:FieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TLSUAN" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseHeaderType">
+        <xsd:sequence>
+          <xsd:element name="Reserved" type="inc-field:FieldType"/>
+          <xsd:element name="BranchNumber" type="inc-field:FieldType"/>
+          <xsd:element name="UserID" type="inc-field:FieldType"/>
+          <xsd:element name="SequenceNumber" type="inc-field:FieldType"/>
+          <xsd:element name="TransactionCode" type="inc-field:FieldType"/>
+          <xsd:element name="ClientType" type="inc-field:FieldType"/>
+          <xsd:element name="PostedCode" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseCode" type="inc-field:FieldType"/>
+          <xsd:element name="ApplicationCode" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseFormatCode" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber1" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber2" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber3" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber4" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber5" type="inc-field:FieldType"/>
+          <xsd:element name="TellerNumber" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseLength" type="inc-field:FieldType"/>
+          <xsd:element name="ItemCount" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StandardResponseFormatType">
+        <xsd:sequence>
+          <xsd:element name="ResponseFormatCode" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber1" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber2" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber3" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber4" type="inc-field:FieldType"/>
+          <xsd:element name="MessageNumber5" type="inc-field:FieldType"/>
+          <xsd:element name="TellerNumber" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseLength" type="inc-field:FieldType"/>
+          <xsd:element name="ItemCount" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="HeaderRes" type="tns:ResponseHeaderType"/>
+      <xsd:element name="StandardResFormat" type="tns:StandardResponseFormatType"/>
+      <xsd:element name="HeaderInfo" type="tns:HeaderInfoType"/>
+      <xsd:complexType name="HeaderInfoType">
+        <xsd:sequence>
+          <xsd:element ref="tns:CommonHeaderReq"/>
+          <xsd:element ref="tns:SecondaryHeaderReq"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SignOnReq" type="tns:SignOnReqType"/>
+      <xsd:element name="SignOnRes" type="tns:SignOnResType"/>
+      <xsd:complexType name="SignOnReqType">
+        <xsd:sequence>
+          <xsd:element name="Legnth" type="inc-field:FieldType"/>
+          <xsd:element name="ReservedField" type="inc-field:FieldType"/>
+          <xsd:element name="Branch" type="inc-field:FieldType"/>
+          <xsd:element name="UserID" type="inc-field:FieldType"/>
+          <xsd:element name="SequenceNumber" type="inc-field:FieldType"/>
+          <xsd:element name="TransactionCode" type="inc-field:FieldType"/>
+          <xsd:element name="ClientType" type="inc-field:FieldType"/>
+          <xsd:element name="EncryptionFlag" type="inc-field:FieldType"/>
+          <xsd:element name="CurPass" type="inc-field:FieldType"/>
+          <xsd:element name="NewPass" type="inc-field:FieldType"/>
+          <xsd:element name="PCCodePage" type="inc-field:FieldType"/>
+          <xsd:element name="WorkstationID" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadingSocket" type="tns:ReadingSocketType"/>
+      <xsd:complexType name="ReadingSocketType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReadSize" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Connection" type="xsd:base64Binary"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CommonBodyReq" type="tns:CommonBodyReqType"/>
+      <xsd:complexType name="CommonBodyReqType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="CommonBodyMain" type="tns:CommonBodyMainType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CommonBodyExtra" type="tns:CommonBodyExtraType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommonBodyMainType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SupervisorID" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="EffectiveDate" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReentryDate" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReentryTime" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CorrectionSequence" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Password" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CIFKey" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AccountNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TransfertoAccount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AlternateAccount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PassbookBalance" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TransactionAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CashInAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CashOutAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ChequesOutAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CollectedCheques" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LocalItemsDeposited" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CollectedFloatDays" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcheques1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Foreignitemsdeposited" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcksdays1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcks2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notusedatthistime1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcksdays2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcheques3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notusedatthistime2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcksdays3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcheques4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notusedatthistime3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Uncollectedcksdays4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeAmount1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeAmount2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeAmount3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeAmount4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeAmount5" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PrincipalAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="InterestAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="EscrowAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LoanTypeCode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCEofTransAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ForeignCurrencyCode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ForeignCurrencyRate" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="IRACodeOrigtrancode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="IRAYear" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CheckNumber1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CheckNumber2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MiscDate1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MiscDate2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TicketNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CashierNumberPresentCurr" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ReferenceNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha5" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha6" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PostalCode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Fee6TaxAmountorLateFee" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TillNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="HomeBranchNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CustomerSeqNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCECashInAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCECashOutAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ChequeOutAmtLCE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCECollectedChqAmt" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCEUnCollectedChq1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCEUnCollectedChq2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCEUnCollectedChq3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LCEUnCollectedChq4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeInDr" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ExchangeOutCr" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TransactionTime" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha7" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha8" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="OverridePenalty" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ShortNamePrefix" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ConstantSymbol" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="VariableSymbol" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SpecificSymbol" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CreditLineNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="SublimitNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MiscCashIn" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MiscCashInLCYE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notinuse1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Genericlinkfield" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PINBlock" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CardNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="DealerNumber" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="LongWorkstationName" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notinuse" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AuthorisationCode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notinuse2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notinuse3" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Notinuse4" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Additionalfieldspresent" type="inc-field:BitmapFieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CommonBodyExtraType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToCurrencyCode" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToExchangeRate" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToTransactionAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToTransactionAmountLCE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToExchangeInAmount" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ToCostCentre" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Availableforfutureuse1" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Availableforfutureuse2" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TotalFeeAmtinAccountCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TotalFeeAmtinLCYE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TotalFeeAmtinPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CashInPresentationCurr" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CashOutPresentationCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ChequesOutPresentationCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="NetTranAmtinPresentCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="NetTranAmtinLCYE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ExchrateofPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FloatAmount1inPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FloatAmount2inPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FloatAmount3inPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FloatAmount4inPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FloatAmount5inPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="MiscCashinAmountPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="NetTransaction" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TotalTranAmtinPresCur" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="TotalTranAmtinLCYE" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="OldTranSecondaryType" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AliasAcctNoType" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AliasAcctNo" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AliasAcctNoTypeXferTo" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AliasAcctNoXferTo" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="GroupSequenceNo" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="PromotionIdentifier" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="Alpha9" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CreditAdviceRefer" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="FeeLCYEs" type="inc-field:BitmapFieldType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="CorrectionDate" type="inc-field:BitmapFieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CommonBodyMain" type="tns:CommonBodyMainType"/>
+      <xsd:element name="CommonBodyExtra" type="tns:CommonBodyExtraType"/>
+      <xsd:element name="ByteArrayWithOption" type="tns:ByteArrayWithOptionType"/>
+      <xsd:complexType name="ByteArrayWithOptionType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="FieldList" type="tns:FieldListType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="InputString" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResponseHeaderCRINType">
+        <xsd:sequence>
+          <xsd:element name="Dummy" type="inc-field:FieldType"/>
+          <xsd:element name="BranchNumber" type="inc-field:FieldType"/>
+          <xsd:element name="UserID" type="inc-field:FieldType"/>
+          <xsd:element name="SequenceNumber" type="inc-field:FieldType"/>
+          <xsd:element name="Transactioncode" type="inc-field:FieldType"/>
+          <xsd:element name="ClientType" type="inc-field:FieldType"/>
+          <xsd:element name="PostedCode" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseCode" type="inc-field:FieldType"/>
+          <xsd:element name="ApplicationCode" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseFormatCode" type="inc-field:FieldType"/>
+          <xsd:element name="ExtendedError1" type="inc-field:FieldType"/>
+          <xsd:element name="ExtendedError2" type="inc-field:FieldType"/>
+          <xsd:element name="ExtendedError3" type="inc-field:FieldType"/>
+          <xsd:element name="ExtendedError4" type="inc-field:FieldType"/>
+          <xsd:element name="ExtendedError5" type="inc-field:FieldType"/>
+          <xsd:element name="ResponseLength" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="HeaderResCRIN" type="tns:ResponseHeaderCRINType"/>
+      <xsd:complexType name="HeaderForClientType">
+        <xsd:sequence>
+          <xsd:element name="BranchNumber" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="UserID" type="xsd:string"/>
+          <xsd:element name="SequenceNumber" type="xsd:string"/>
+          <xsd:element name="TellerID" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OverrideFlag" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="CorrectionFlag" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ReBIDFlag" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="HeaderForClient" type="tns:HeaderForClientType"/>
+      <xsd:element name="SigMsgReq" type="tns:SigMsgReqType"/>
+      <xsd:complexType name="SigMsgReqType">
+        <xsd:sequence>
+          <xsd:element name="MsgType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ResTranCode" type="xsd:string"/>
+          <xsd:element minOccurs="0" ref="tns:HeaderInfo"/>
+          <xsd:element minOccurs="0" name="MsgBody" type="cmd-fw:MessageType"/>
+          <xsd:element minOccurs="0" name="LegacyName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SigMsgRes" type="tns:SigMsgResType"/>
+      <xsd:complexType name="SigMsgResType">
+        <xsd:sequence>
+          <xsd:element ref="cmd-svrenv:ResponseStatus"/>
+          <xsd:choice minOccurs="0">
+            <xsd:element ref="tns:HeaderRes"/>
+            <xsd:element ref="tns:HeaderResCRIN"/>
+          </xsd:choice>
+          <xsd:element minOccurs="0" name="MsgBody" type="cmd-fw:MessageType"/>
+          <xsd:element minOccurs="0" name="LegacyName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SigLogType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CorrelationID" type="xsd:string"/>
+          <xsd:element name="Data" type="xsd:base64Binary"/>
+          <xsd:element minOccurs="0" name="TransCodeType" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="User" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="LogSig" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="InboundQueue" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="OutboundQueue" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SigLog" type="tns:SigLogType"/>
+      <xsd:element name="operationRequest2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="CoreQueueNameType">
+        <xsd:sequence>
+          <xsd:element name="InboundQueue" type="xsd:string"/>
+          <xsd:element name="OutboundQueue" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CoreQueueName" type="tns:CoreQueueNameType"/>
+      <xsd:complexType name="SEG90001Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SUX1CS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SUXREL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUXNOT" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG90002Type">
+        <xsd:sequence>
+          <xsd:element name="SCXLNBR" type="inc-field:FieldType"/>
+          <xsd:element name="SCXSNBR" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG90003Type">
+        <xsd:sequence>
+          <xsd:element name="SCUSTTY" type="inc-field:FieldType"/>
+          <xsd:element name="SCUDTSM" type="inc-field:FieldType"/>
+          <xsd:element name="SCUSTNR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSTCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSTFR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSTSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSTDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUALT" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG90004Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SCLNBR" type="inc-field:FieldType"/>
+          <xsd:element name="SCLIDLT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCLLNR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCLSLNR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCLPCT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCLMAX" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG13001Type">
+        <xsd:sequence>
+          <xsd:element name="SDACIFD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SDAPROM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SDASLMN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SDATHRD" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG03001Type">
+        <xsd:sequence>
+          <xsd:element name="SISPTYP" type="inc-field:FieldType"/>
+          <xsd:element name="SISPOTY" type="inc-field:FieldType"/>
+          <xsd:element name="SISBRCH" type="inc-field:FieldType"/>
+          <xsd:element name="SISOFF" type="inc-field:FieldType"/>
+          <xsd:element name="SISIPNO" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISCIFD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISBCOD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISRBNO" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISSLMN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISICOP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISMNBL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISMNPA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISMXCV" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISCVAM" type="inc-field:FieldType"/>
+          <xsd:element name="SISFXPA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISRATE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISCPPR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISCDSR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISIYBS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISIABS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISRTCH" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISIPTR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SDATHRD" type="inc-field:FieldType"/>
+          <xsd:element name="SISAPNO" type="inc-field:FieldType"/>
+          <xsd:element name="SISACCT" type="inc-field:FieldType"/>
+          <xsd:element name="SISACSN" type="inc-field:FieldType"/>
+          <xsd:element name="SISSTRD" type="inc-field:FieldType"/>
+          <xsd:element name="SISEDAT" type="inc-field:FieldType"/>
+          <xsd:element name="SISEDYSY" type="inc-field:FieldType"/>
+          <xsd:element name="SISPEFD" type="inc-field:FieldType"/>
+          <xsd:element name="SISADAT" type="inc-field:FieldType"/>
+          <xsd:element name="SISPDDT" type="inc-field:FieldType"/>
+          <xsd:element name="SISPPER" type="inc-field:FieldType"/>
+          <xsd:element name="SISPFRQ" type="inc-field:FieldType"/>
+          <xsd:element name="SISPSPD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISAANT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SISAAN" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG01004Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SCMMNBR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPAPP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPACC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPSACC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPRULE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPAMAX" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPPPTY" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPARUL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPRTCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPSPRL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPSPRD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCPPLPR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCMSEQID4" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG21001Type">
+        <xsd:sequence>
+          <xsd:element name="SSOINID" type="inc-field:FieldType"/>
+          <xsd:element name="SSOAPPN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOREFN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSODESC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPER" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOFRQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSODAY1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOORDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOEXDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAPDR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAPCR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAPFR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOFCTL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAEXR" type="inc-field:FieldType"/>
+          <xsd:element name="SSOAPAP" type="inc-field:FieldType"/>
+          <xsd:element name="SSOAPAC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSODESC2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSODESC3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOGLCC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOATBL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAMTR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOATAI" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAPBK" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOAPEX" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOASGRN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOSAANT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOSAAN" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG21002Type">
+        <xsd:sequence>
+          <xsd:element name="SSIINID" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTID" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTPNO" type="inc-field:FieldType"/>
+          <xsd:element name="SSOINAC" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTAMT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOINCC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SOOTEXR" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTPAP" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTCUR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTACM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTPMA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTAPC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTPRD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTBRN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTOFF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTPCA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSGRN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSPAC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSPCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTAANT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTAAN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPTOBT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOEXACT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPREFT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOFPS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOCUST" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOCUID" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG21003Type">
+        <xsd:sequence>
+          <xsd:element name="SSIINID" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTID" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTPNO" type="inc-field:FieldType"/>
+          <xsd:element name="SSOPTOB" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTREF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES" type="inc-field:FieldType"/>
+          <xsd:element name="SSOEXAC" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTAMT" type="inc-field:FieldType"/>
+          <xsd:element name="SSOTCUR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPDT1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPDT2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPDT3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPCR1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPCR2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPCR3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SOOTEXR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTDES3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTPMA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTAPC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTPCA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSEQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOTSGRN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPTOBT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOEXACT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOPREFT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOFPS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOCUST" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SSOCUID" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50001Type">
+        <xsd:sequence>
+          <xsd:element name="SLNNOTE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLSANBR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLSASEQ" type="inc-field:FieldType"/>
+          <xsd:element name="SLNTYPE" type="inc-field:FieldType"/>
+          <xsd:element name="SLNBRCH" type="inc-field:FieldType"/>
+          <xsd:element name="SLNOFF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNNTYP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNNTDT" type="inc-field:FieldType"/>
+          <xsd:element name="SLNMTDT" type="inc-field:FieldType"/>
+          <xsd:element name="SLNFACE" type="inc-field:FieldType"/>
+          <xsd:element name="SLNRATE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLIX1CS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNTERM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNDISB" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SNBRPMT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNFRQ" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNRQTP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNAALAT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNAALAC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPNNR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="S9TMPD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="S9TMFR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="S9FPDF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="S9MATF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="S9PFSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNUSID" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSPID" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50002Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SLNIGAR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNBILL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCBFG" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPPDF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCRTE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCOLB" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNLTV" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNFRB" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNFDIC" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50003Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SLNADAT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNNABL" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNBRND" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNIRVR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNIRVE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNDOE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPART" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCR1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCR2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNAPP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNCENS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSMSA" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNRCRS" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNRISK" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNT1SB" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNT1RT" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50004Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SLNINTM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNINTP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNINTF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNINDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNISPD" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50005Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SLNSCHD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPRP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPRF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPRSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNPRDN" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50006Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SLNSCPM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCF" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLXSCDT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCTY" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCAM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCE1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLNSCE2" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50020Type">
+        <xsd:sequence>
+          <xsd:element name="SLNNOTE" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SLSANBR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1NPAM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1NPIN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1DDDT" type="inc-field:FieldType"/>
+          <xsd:element name="SL1DAMT" type="inc-field:FieldType"/>
+          <xsd:element name="SL1DTYP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1ALTY" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1ALAC" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG50021Type">
+        <xsd:sequence>
+          <xsd:element name="SL1CKNR" type="inc-field:FieldType"/>
+          <xsd:element name="SL1CAMT" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SL1PAYE" type="inc-field:FieldType"/>
+          <xsd:element name="SL1SEQ" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SEG69001Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="SCUANBR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUNBR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULTY" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULCCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULOF1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULOF2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULNAM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSLNM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULCMR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULDS1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULDS2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULGRP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULPTY" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRSK" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRTC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULOLN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULEXD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRV" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRPR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRFR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULRND" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULNL1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULNL2" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULNL3" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFL1" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFPR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFFR" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFSP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFAM" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFNX" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFCH" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULFAC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSLCD" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCULAPC" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUBRCH" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUFACN" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUWDRP" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCUSID" type="inc-field:FieldType"/>
+          <xsd:element minOccurs="0" name="SCSPID" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MSIDXDType">
+        <xsd:sequence>
+          <xsd:element name="MSSGID" type="inc-field:FieldType"/>
+          <xsd:element name="MSNOSG" type="inc-field:FieldType"/>
+          <xsd:element name="MSSGOF" type="inc-field:FieldType"/>
+          <xsd:element name="MSSSIZ" type="inc-field:FieldType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" elementFormDefault="qualified" targetNamespace="datamodel/datatypes/common/serviceenvelope">
+      <xsd:element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+      <xsd:complexType name="ServiceHeaderType">
+        <xsd:sequence>
+          <xsd:element name="ServiceVersion" type="xsd:string"/>
+          <xsd:element name="MessageID" type="xsd:string"/>
+          <xsd:element name="CorrelationID" type="xsd:string"/>
+          <xsd:element name="ParentMessageID" type="xsd:string"/>
+          <xsd:element name="FromID" type="cmd-svrenv:FromIDType"/>
+          <xsd:element name="CreateTime" type="xsd:dateTime"/>
+          <xsd:element name="Signature" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FromIDType">
+        <xsd:sequence>
+          <xsd:element name="ID" type="xsd:string"/>
+          <xsd:element name="Name" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ResponseStatus" type="cmd-svrenv:ResponseStatusType"/>
+      <xsd:complexType name="ResponseStatusType">
+        <xsd:sequence>
+          <xsd:element name="Status" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ErrorCode" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="ErrorDescription" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ErrorDetail" type="cmd-svrenv:ErrorDetailType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ErrorDetailType">
+        <xsd:sequence>
+          <xsd:element name="ApplicationID" type="xsd:string"/>
+          <xsd:element name="ErrorCode" type="xsd:string"/>
+          <xsd:element name="ErrorDescription" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BaseServiceRequestType">
+        <xsd:sequence>
+          <xsd:element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BaseServiceResponseType">
+        <xsd:sequence>
+          <xsd:element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+          <xsd:element name="ResponseStatus" type="cmd-svrenv:ResponseStatusType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:cmd-party="http://www.vietcombank.com.vn/entity/vn/common/party" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" xmlns:sig="http://www.vietcombank.com/entity/global/backend/vn/signature/message/1.0" xmlns:tns="http://www.vietcombank.com.vn/global/vn/customer/customerinfo/1.0" elementFormDefault="qualified" targetNamespace="http://www.vietcombank.com.vn/global/vn/customer/customerinfo/1.0">
+      <xsd:import namespace="datamodel/datatypes/common/serviceenvelope"/>
+      <xsd:import namespace="http://www.vietcombank.com.vn/entity/vn/common/party"/>
+      <xsd:import namespace="http://www.vietcombank.com/entity/global/backend/vn/signature/message/1.0"/>
+      <xsd:element name="CustomerInfoInqReq" type="tns:CustomerInfoInqReqType"/>
+      <xsd:element name="CustomerInfoInqRes" type="tns:CustomerInfoInqResType"/>
+      <xsd:element name="PayloadInqReq" type="tns:PayloadInqReqType"/>
+      <xsd:element name="PayloadInqRes" type="tns:PayloadInqResType"/>
+      <xsd:complexType name="CustomerInfoInqReqType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceRequestType">
+            <xsd:sequence>
+              <xsd:element ref="tns:PayloadInqReq"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="PayloadInqReqType">
+        <xsd:sequence>
+          <xsd:element name="HeaderForClient" type="sig:HeaderForClientType"/>
+          <xsd:element name="CifNo" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoInqResType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceResponseType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" ref="tns:PayloadInqRes"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="PayloadInqResType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CustomerInfo" type="cmd-party:CustomerInfoType"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="AdditionalInfo" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoUpdReqType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceRequestType">
+            <xsd:sequence>
+              <xsd:element ref="tns:PayloadUdpReq"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoUpdResType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceResponseType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" ref="tns:PayloadUdpRes"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="PayloadUpdReqType">
+        <xsd:sequence>
+          <xsd:element name="HeaderForClient" type="sig:HeaderForClientType"/>
+          <xsd:element name="UpdField" type="xsd:string"/>
+          <xsd:element name="CustomInfo" type="cmd-party:CustomerInfoType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PayloadUdpResType"/>
+      <xsd:element name="CustomerInfoUpdReq" type="tns:CustomerInfoUpdReqType"/>
+      <xsd:element name="CustomerInfoUpdRes" type="tns:CustomerInfoUpdResType"/>
+      <xsd:element name="PayloadUdpReq" type="tns:PayloadUpdReqType"/>
+      <xsd:element name="PayloadUdpRes" type="tns:PayloadUdpResType"/>
+      <xsd:complexType name="PayloadAddReqType">
+        <xsd:sequence>
+          <xsd:element name="HeaderForClient" type="sig:HeaderForClientType"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="CustomerName" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="CustomerAddress" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="IDType" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="IDNo" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="IDIssueDate" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="IDIssuePlace" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="IDExpiryDate" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="PrimaryOfficerNumber" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="OpeningDate" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="CustomerType" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Gender" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="DateOfBirth" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Branch" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="DateMoveIn" type="xsd:date"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="Resident" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="State" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="EconomicSector" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="ClassLevel" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="HomePhoneFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="MobilePhoneFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="MailFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="EmailFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="TextMessageFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="BrailleDocumentFlag" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="LargePrintFlag" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PayloadAddResType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="CustomerID" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="PayloadAddReq" type="tns:PayloadAddReqType"/>
+      <xsd:element name="PayloadAddRes" type="tns:PayloadAddResType"/>
+      <xsd:complexType name="CustomerInfoAddReqType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceRequestType">
+            <xsd:sequence>
+              <xsd:element ref="tns:PayloadAddReq"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoAddResType">
+        <xsd:complexContent>
+          <xsd:extension base="cmd-svrenv:BaseServiceResponseType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" ref="tns:PayloadAddRes"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="CustomerInfoAddReq" type="tns:CustomerInfoAddReqType"/>
+      <xsd:element name="CustomerInfoAddRes" type="tns:CustomerInfoAddResType"/>
+    </xsd:schema>
+    <xsd:schema xmlns:Q1="datamodel/datatypes/common/serviceenvelope" xmlns:cmd-fw="datamodel/datatypes/common/framework" elementFormDefault="qualified" targetNamespace="datamodel/datatypes/common/framework">
+      <xsd:import namespace="datamodel/datatypes/common/serviceenvelope"/>
+      <xsd:element name="DynProcessInfo" type="Q1:ResponseStatusType"/>
+      <xsd:complexType name="DynProcessInfoType">
+        <xsd:sequence>
+          <xsd:element name="Application" type="xsd:string"/>
+          <xsd:element name="Version" type="xsd:string"/>
+          <xsd:element name="ProcessName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ServiceInfo" type="cmd-fw:ServiceInfoType"/>
+      <xsd:complexType name="ServiceInfoType">
+        <xsd:sequence>
+          <xsd:element name="ServiceName" type="xsd:string"/>
+          <xsd:element name="Version" type="xsd:string"/>
+          <xsd:element name="OperationName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MessageRequest" type="cmd-fw:MessageRequestType"/>
+      <xsd:complexType name="MessageRequestType">
+        <xsd:sequence>
+          <xsd:element name="ServiceHeader" type="Q1:ServiceHeaderType"/>
+          <xsd:element name="MessageType" type="cmd-fw:MessageType"/>
+          <xsd:element name="SOAMsgId" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MessageType" type="cmd-fw:MessageType"/>
+      <xsd:complexType name="MessageType">
+        <xsd:sequence>
+          <xsd:any minOccurs="0" namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="operationRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReplyMessageType" type="cmd-fw:ReplyMessageType"/>
+      <xsd:complexType name="ReplyMessageType">
+        <xsd:sequence>
+          <xsd:element name="ResponseStatus" type="Q1:ResponseStatusType"/>
+          <xsd:any minOccurs="0" namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="operationRequest1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationResponse1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationRequest11">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="operationResponse11">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:inc-field="http://www.vietcombank.com/entity/global/backend/vn/as400/message/1.0" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.vietcombank.com/entity/global/backend/vn/as400/message/1.0">
+      <xsd:complexType name="FieldType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Type" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Length" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Size" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Value" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Position" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AS400Message" type="inc-field:AS400MessageType"/>
+      <xsd:complexType name="AS400MessageType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="inc-field:Field"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Field" type="inc-field:FieldType"/>
+      <xsd:complexType name="BitmapFieldType">
+        <xsd:complexContent>
+          <xsd:extension base="inc-field:FieldType">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="Index" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="InquiryRequest">
+    <wsdl:part element="tns3:CustomerInfoInqReq" name="inInquiry"/>
+  </wsdl:message>
+  <wsdl:message name="InquiryResponse">
+    <wsdl:part element="tns3:CustomerInfoInqRes" name="outInquiry"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateRequest">
+    <wsdl:part element="tns3:CustomerInfoUpdReq" name="inUpdate"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateResponse">
+    <wsdl:part element="tns3:CustomerInfoUpdRes" name="outUpdate"/>
+  </wsdl:message>
+  <wsdl:portType name="CustomerInfo">
+    <wsdl:operation name="Inquiry">
+      <wsdl:input message="tns:InquiryRequest"/>
+      <wsdl:output message="tns:InquiryResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateRequest"/>
+      <wsdl:output message="tns:UpdateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerInfoServiceBinding" type="tns:CustomerInfo">
+    <soap12:binding style="document" transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS"/>
+    <jms:binding messageFormat="bytes"/>
+    <wsdl:operation name="Inquiry">
+      <soap12:operation soapAction="Inquiry" soapActionRequired="true" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="inInquiry" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="outInquiry" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="Update" soapActionRequired="true" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="inUpdate" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="outUpdate" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerInfo">
+    <wsdl:port binding="tns:CustomerInfoServiceBinding" name="CustomerInfoSOAP">
+      <soap12:address location=""/>
+      <jms:connectionFactory>FTQueueConnectionFactory</jms:connectionFactory>
+      <jms:targetAddress destination="queue">vn.customer.ws-customerinfo.1.0</jms:targetAddress>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

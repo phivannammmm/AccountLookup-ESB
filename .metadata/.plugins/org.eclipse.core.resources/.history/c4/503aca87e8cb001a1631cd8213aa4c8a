@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.example.com/namespaces/tns/1595392200519" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/namespaces/tns/1595392200519">
+  <xsd:element name="AcctInfoResult">
+    <xsd:complexType>
+      <xsd:sequence>
+                <xsd:element name="ServiceHeader">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ServiceVersion" type="xsd:string"/>
+                            <xsd:element name="MessageID" type="xsd:string"/>
+                            <xsd:element name="CorrelationID" type="xsd:string"/>
+                            <xsd:element name="ParentMessageID" type="xsd:string"/>
+                            <xsd:element name="FromID">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ID" type="xsd:string"/>
+                                        <xsd:element name="Name" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="CreateTime" type="xsd:dateTime"/>
+                            <xsd:element name="Signature" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="ResponseStatus">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Status" type="xsd:string"/>
+                            <xsd:element name="ErrorCode" type="xsd:string"/>
+                            <xsd:element name="ErrorDescription" type="xsd:string"/>
+                            <xsd:element name="ErrorDetail">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ApplicationID" type="xsd:string"/>
+                                        <xsd:element name="ErrorCode" type="xsd:string"/>
+                                        <xsd:element name="ErrorDescription" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="PayloadInqRes">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="AcctInfo">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="AcctID">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="AcctNo" type="xsd:string"/>
+                                                    <xsd:element name="AcctType" type="xsd:string"/>
+                                                    <xsd:element name="GLCostCenter" type="xsd:string"/>
+                                                    <xsd:element name="GLSerial" type="xsd:string"/>
+                                                </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                                        <xsd:element name="OldAcctID">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="AcctNo" type="xsd:string"/>
+                                                    <xsd:element name="AcctType" type="xsd:string"/>
+                                                    <xsd:element name="GLCostCenter" type="xsd:string"/>
+                                                    <xsd:element name="GLSerial" type="xsd:string"/>
+                                                </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                                        <xsd:element name="AcctName" type="xsd:string"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                        <xsd:element name="AcctStatus" type="xsd:string"/>
+                                        <xsd:element name="AcctRelation" type="xsd:string"/>
+                                        <xsd:element name="AcctBal">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Amount" type="xsd:double"/>
+                                                    <xsd:element name="CurCode" type="xsd:string"/>
+                                                </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                                        <xsd:element name="AvaiBal">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Amount" type="xsd:double"/>
+                                                    <xsd:element name="CurCode" type="xsd:string"/>
+                                                </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                                        <xsd:element name="BranchInfo">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="BankInfo">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="primitive" type="xsd:string"/>
+                                                                <xsd:element name="primitive1" type="xsd:string"/>
+                                                            </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                                                    <xsd:element name="BranchNo" type="xsd:string"/>
+                                                    <xsd:element name="BranchCode" type="xsd:string"/>
+                                                    <xsd:element name="BranchBranchName" type="xsd:string"/>
+                                                    <xsd:element name="ContactInfo">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="PhoneInfo">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="primitive" type="xsd:string"/>
+                                                                            <xsd:element name="primitive1" type="xsd:string"/>
+                                                                        </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                                                <xsd:element name="AddressInfo">
+                                  <xsd:complexType>
+                                    <xsd:sequence/>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                                                <xsd:element name="MailInfo">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="primitive" type="xsd:string"/>
+                                                                            <xsd:element name="primitive1" type="xsd:string"/>
+                                                                        </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                                            </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                                                </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                                        <xsd:element name="OpenDate" type="xsd:string"/>
+                                        <xsd:element name="ClosedDate" type="xsd:string"/>
+                                        <xsd:element name="Desc" type="xsd:string"/>
+                                        <xsd:element name="VIPClass" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="SName" type="xsd:string"/>
+                            <xsd:element name="CollectBal">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="MinBal">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="StmtBal">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="HoldAmt">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="AccuredInt">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="ODLimit">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="ODInt">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="CifNo" type="xsd:string"/>
+                            <xsd:element name="CustName" type="xsd:string"/>
+                            <xsd:element name="CustType" type="xsd:string"/>
+                            <xsd:element name="VATExemptFlag" type="xsd:string"/>
+                            <xsd:element name="VATNumber" type="xsd:string"/>
+                            <xsd:element name="Add" type="xsd:string"/>
+                            <xsd:element name="LastActDate" type="xsd:string"/>
+                            <xsd:element name="DepTypeCode" type="xsd:string"/>
+                            <xsd:element name="ProdInfo">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ProductId" type="xsd:string"/>
+                                        <xsd:element name="ProductCode" type="xsd:string"/>
+                                        <xsd:element name="ProductName" type="xsd:string"/>
+                                        <xsd:element name="ProductLimit" type="xsd:double"/>
+                                        <xsd:element name="ProductGroup" type="xsd:string"/>
+                                        <xsd:element name="ProductDesc" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="IntRate" type="xsd:string"/>
+                            <xsd:element name="CreditAdviceFlag" type="xsd:string"/>
+                            <xsd:element name="WHCode" type="xsd:string"/>
+                            <xsd:element name="LastDepAmt">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="YTDInt">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="LastIntPaid">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Amount" type="xsd:double"/>
+                                        <xsd:element name="CurCode" type="xsd:string"/>
+                                    </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+                            <xsd:element name="LastDepDate" type="xsd:string"/>
+                            <xsd:element name="LastStmtDate" type="xsd:string"/>
+                            <xsd:element name="VarianceRate" type="xsd:string"/>
+                            <xsd:element name="FlooRate" type="xsd:string"/>
+                            <xsd:element name="CeilingRate" type="xsd:string"/>
+                            <xsd:element name="CreditAdvFlag" type="xsd:string"/>
+                            <xsd:element name="CloseTodayFlag" type="xsd:string"/>
+                            <xsd:element name="JoinAcctFlag" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

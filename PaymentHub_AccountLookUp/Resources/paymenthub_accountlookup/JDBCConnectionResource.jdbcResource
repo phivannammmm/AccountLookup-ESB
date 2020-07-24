@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_khGbILENEeqqY_fPBjNfag" name="paymenthub_accountlookup.JDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_kjtqQLENEeqqY_fPBjNfag" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_kjtqQbENEeqqY_fPBjNfag">
+    <substitutionBindings xmi:id="_FUSaILIbEeqx4d-vGK1Uow" template="username" propName="/VCBCORE/UserName"/>
+    <substitutionBindings xmi:id="_GYawoLIbEeqx4d-vGK1Uow" template="password" propName="/VCBCORE/Password"/>
+    <substitutionBindings xmi:id="_Oz5vMLIbEeqx4d-vGK1Uow" template="maxConnections" propName="/VCBCORE/MaxConnection"/>
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_kjtqQrENEeqqY_fPBjNfag" jdbcDriver="tibcosoftwareinc.jdbc.oracle.OracleDriver" dbURL="jdbc:tibcosoftwareinc:oracle://&lt;host>:&lt;port>;ServiceName=&lt;serviceName>">
+      <substitutionBindings xmi:id="_AZCBELIbEeqx4d-vGK1Uow" template="dbURL" propName="/VCBCORE/URL"/>
+      <substitutionBindings xmi:id="_CPOtsLIbEeqx4d-vGK1Uow" template="loginTimeout" propName="/VCBCORE/LoginTimeOut"/>
+    </connectionConfig>
+  </jndi:configuration>
+</jndi:namedResource>

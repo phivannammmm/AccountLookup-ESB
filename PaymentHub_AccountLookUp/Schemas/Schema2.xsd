@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://www.example.com/namespaces/tns/1594437464266" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.com/namespaces/tns/1594437464266">
+  <xsd:element name="GetTable">
+    <xsd:complexType>
+      <xsd:sequence>
+                <xsd:element name="T1">
+          <xsd:complexType>
+            <xsd:sequence>
+                            <xsd:element minOccurs="0" name="ACCTNO" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CUX1AC" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CUAANTYP" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T2">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="DMCMCN" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ACCOUNTSHORTNAME" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ACCOUNTSTATUS" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="BRANCH" type="xsd:integer"/>
+                            <xsd:element minOccurs="0" name="PRODUCTTYPE" type="xsd:integer"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T3">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="CUX1CS" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T4">
+          <xsd:complexType>
+            <xsd:sequence>
+                            <xsd:element minOccurs="0" name="CIFNAME1" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CIFNAME2" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CIFSHORTNAME" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CUSTTYPE" type="xsd:integer"/>
+                            <xsd:element minOccurs="0" name="ADDRESS1" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ADDRESS2" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ADDRESS3" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ADDRESS4" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T5">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ENGLISHNAME1" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="ENGLISHNAME2" type="xsd:string"/>
+                            <xsd:element name="AccountName1" type="xsd:string"/>
+                            <xsd:element name="AccountName2" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T6">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="CAFLAG" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T7">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="ISRESIDENT" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="CLASSLEVEL" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T8">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="VATEXEMPT" type="xsd:string"/>
+                            <xsd:element minOccurs="0" name="VIPORNOT" type="xsd:string"/>
+                        </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+                <xsd:element name="T9">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="CURRENCY" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+            </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

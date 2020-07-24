@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_g3J1wLEJEeqQcMdOIynQlA" targetNamespace="http://tns.tibco.com/bw/composite/PaymentHub_AccountLookUp" name="PaymentHub_AccountLookUp" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:property xmi:id="_ha-7kLEJEeqQcMdOIynQlA" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hbQoYLEJEeqQcMdOIynQlA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hbeq0LEJEeqQcMdOIynQlA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hbw-sLEJEeqQcMdOIynQlA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hb_oMLEJEeqQcMdOIynQlA" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hcO4wLEJEeqQcMdOIynQlA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hccUILEJEeqQcMdOIynQlA" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hcrksLEJEeqQcMdOIynQlA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_hc8DYLEJEeqQcMdOIynQlA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_MZZtkLIZEeqx4d-vGK1Uow" name="/VCBCORE/URL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_etrWMLIZEeqx4d-vGK1Uow" name="/VCBCORE/UserName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_rA9FsLIZEeqx4d-vGK1Uow" name="/VCBCORE/Password" type="property:password" scaext:simpleValue="#!sTDTCKuOg4HK738lHYf6xQ==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_3ymMMLIZEeqx4d-vGK1Uow" name="/VCBCORE/LoginTimeOut" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_7gpyULIZEeqx4d-vGK1Uow" name="/VCBCORE/TransactionTimeOut" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_E-9f0LIaEeqx4d-vGK1Uow" name="/VCBCORE/MaxRow" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_KB3jkLIbEeqx4d-vGK1Uow" name="/VCBCORE/MaxConnection" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Y0rtELIaEeqx4d-vGK1Uow" name="/GPP/MQ/HostName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_eRkzkLIaEeqx4d-vGK1Uow" name="/GPP/MQ/Port" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_iqulILIaEeqx4d-vGK1Uow" name="/GPP/MQ/ServerChannelName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_pYGcELIaEeqx4d-vGK1Uow" name="/GPP/MQ/AcctLookupQueueIn" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_wbm7ELIaEeqx4d-vGK1Uow" name="/GPP/MQ/AcctLookupQueueOut" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_l-82ALEJEeqQcMdOIynQlA" name="ComponentAcctLookup" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_l-82AbEJEeqQcMdOIynQlA" processName="paymenthub_accountlookup.AcctLookup"/>
+  </sca:component>
+  <sca:component xmi:id="_MldyoMgdEeqi6vOCYVtZNw" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_MldyocgdEeqi6vOCYVtZNw" processName="paymenthub_accountlookup.Process"/>
+  </sca:component>
+</sca:composite>
